@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "511079067004",
+    "project_id": "beecoder-96c87",
+    "storage_bucket": "beecoder-96c87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511079067004:android:8823a3de5b8fe5716688f9",
+        "android_client_info": {
+          "package_name": "ru.mavesoft.cornofficeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511079067004-i2uum1dmkpiub2o0le36psjmd9b3vs7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4tdeHizszwsJkKk0APtymmafRuJkm0ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511079067004-i2uum1dmkpiub2o0le36psjmd9b3vs7a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "511079067004-2to4fh87er04endl6i79g16sd7aj5qh1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.art22m.CornOffice"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
