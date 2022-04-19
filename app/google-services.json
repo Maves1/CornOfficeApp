@@ -1,37 +1,37 @@
 {
   "project_info": {
-    "project_number": "511079067004",
-    "project_id": "beecoder-96c87",
-    "storage_bucket": "beecoder-96c87.appspot.com"
+    "project_number": "332314188980",
+    "project_id": "becoder-c9384",
+    "storage_bucket": "becoder-c9384.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:511079067004:android:8823a3de5b8fe5716688f9",
+        "mobilesdk_app_id": "1:332314188980:android:73df960d44a06d01b7cbe1",
         "android_client_info": {
           "package_name": "ru.mavesoft.cornofficeapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "511079067004-i2uum1dmkpiub2o0le36psjmd9b3vs7a.apps.googleusercontent.com",
+          "client_id": "332314188980-i2dn81ge61sle11nfope0nfvmpfodgfq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB4tdeHizszwsJkKk0APtymmafRuJkm0ok"
+          "current_key": "AIzaSyCZnhJmyryzaHuIqYTxrLe70XLF3Sy4whI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "511079067004-i2uum1dmkpiub2o0le36psjmd9b3vs7a.apps.googleusercontent.com",
+              "client_id": "332314188980-i2dn81ge61sle11nfope0nfvmpfodgfq.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "511079067004-2to4fh87er04endl6i79g16sd7aj5qh1.apps.googleusercontent.com",
+              "client_id": "332314188980-np4d80vk87cf3ukfj6adn4vv1j24hhvc.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.art22m.CornOffice"

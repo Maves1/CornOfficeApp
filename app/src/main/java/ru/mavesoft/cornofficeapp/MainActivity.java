@@ -1,11 +1,16 @@
 package ru.mavesoft.cornofficeapp;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -32,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     Map<Integer, Fragment> fragmentMap;
 
+    int qrEntryRequestCode = 3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +62,25 @@ public class MainActivity extends AppCompatActivity {
         btnScanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(getApplicationContext(), ScannerActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, qrEntryRequestCode);
             }
         });
+
+        btnScanQR.setBackgroundColor(getColor(R.color.purple_200));
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == qrEntryRequestCode && resultCode == RESULT_OK) {
+            btnScanQR.setBackgroundColor(
+                    getResources().getColor(com.google.android.material.R.color.design_default_color_background));
+
+        }
     }
 
     private Map<Integer, Fragment> createFragments() {

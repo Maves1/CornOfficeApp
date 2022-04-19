@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,8 +43,8 @@ public class ScannerActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == cameraRequestCode && permissions.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            startQRScanner();
+        if (!(requestCode == cameraRequestCode && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, cameraRequestCode);
         }
     }
 
@@ -54,9 +55,9 @@ public class ScannerActivity extends AppCompatActivity {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA}, cameraRequestCode);
+        } else {
+            startQRScanner();
         }
-
-        startQRScanner();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -90,11 +91,15 @@ public class ScannerActivity extends AppCompatActivity {
 //                                Log.d("Response", response.toString());
                                 EntranceResult result = response.body();
                                 Log.d("EntranceResult", Integer.toString(response.body().getStatus()));
+
+                                Intent intent = new Intent();
+                                setResult(RESULT_OK, intent);
+                                finish();
                             }
 
                             @Override
                             public void onFailure(Call<EntranceResult> call, Throwable t) {
-
+                                mCodeScanner.startPreview();
                             }
                         });
                     }

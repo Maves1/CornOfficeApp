@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public enum SDType {
     @SerializedName("temperature_sensor")
-    TemperatureSensor,
+    temperature_sensor,
 
     @SerializedName("humidity_sensor")
-    HumiditySensor
+    humidity_sensor
 }

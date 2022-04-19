@@ -13,5 +13,7 @@
     <string name="hub">Hub</string>
     <string name="water_temperature">Water temperature:</string>
     <string name="boil">Boil</string>
+    <string name="my_workspace">My Workspace</string>
+    <string name="booking_not_available">It seems that \n there are no available rooms</string>
 
 </resources>

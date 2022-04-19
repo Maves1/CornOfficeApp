@@ -1,5 +1,6 @@
 package ru.mavesoft.cornofficeapp;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -105,7 +106,6 @@ public class DevicesFragment extends Fragment implements SwipeRefreshLayout.OnRe
         devicesCall.enqueue(new Callback<List<Device>>() {
             @Override
             public void onResponse(Call<List<Device>> call, Response<List<Device>> response) {
-                Log.d("ResponseDevices", response.body().get(0).toString());
                 devicesAdapter.setDeviceList(response.body());
                 devicesAdapter.notifyDataSetChanged();
                 fragment.swipeRefreshLayout.setRefreshing(false);
@@ -116,5 +116,24 @@ public class DevicesFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
             }
         });
+    }
+
+    class Refresher extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            int n = 15;
+
+            for (int i = 0; i < 15; i++) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                updateDevices(devicesAdapter, (DevicesFragment) getParentFragment());
+            }
+
+            return null;
+        }
     }
 }

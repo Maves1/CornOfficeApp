@@ -36,8 +36,8 @@ public class SensorsAdapter extends RecyclerView.Adapter<SensorsAdapter.ViewHold
     private Map<SDType, Integer> initializeIcons() {
         Map<SDType, Integer> icons = new HashMap<>();
 
-        icons.put(SDType.TemperatureSensor, R.drawable.ic_baseline_device_thermostat_24);
-        icons.put(SDType.HumiditySensor, R.drawable.ic_baseline_humidity_24);
+        icons.put(SDType.temperature_sensor, R.drawable.ic_baseline_device_thermostat_24);
+        icons.put(SDType.humidity_sensor, R.drawable.ic_baseline_humidity_24);
 
         return icons;
     }
@@ -58,10 +58,10 @@ public class SensorsAdapter extends RecyclerView.Adapter<SensorsAdapter.ViewHold
 
         String adder = "";
         switch (sensorList.get(position).getType()) {
-            case TemperatureSensor:
+            case temperature_sensor:
                 adder = "°C";
                 break;
-            case HumiditySensor:
+            case humidity_sensor:
                 adder = "%";
                 break;
         }

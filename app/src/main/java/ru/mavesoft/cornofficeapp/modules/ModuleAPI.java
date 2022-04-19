@@ -18,4 +18,7 @@ public interface ModuleAPI {
 
     @GET("device/kettle/boil/{id}")
     Call<Void> boilKettle(@Path("id") String id);
+
+    @GET("gadgets/{email}")
+    Call<List<IStatus>> getUserGadgets(@Path("email") String email);
 }

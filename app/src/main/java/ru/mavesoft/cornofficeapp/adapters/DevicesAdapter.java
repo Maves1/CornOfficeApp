@@ -124,11 +124,12 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.ViewHold
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 ModuleAPI moduleAPI = retrofit.create(ModuleAPI.class);
+                Log.d("AdapterPosition", String.valueOf(holder.getAdapterPosition()));
                 Call<Void> voidCall = moduleAPI.switchBulb(deviceList.get(holder.getAdapterPosition()).getID());
                 voidCall.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Log.d("Response", response.toString());
+
                     }
 
                     @Override
