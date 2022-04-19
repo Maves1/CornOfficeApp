@@ -1,13 +1,22 @@
 package ru.mavesoft.cornofficeapp.modules;
 
-public class Sensor implements IStatus {
+import com.google.gson.annotations.SerializedName;
 
+public class Sensor {
+
+    @SerializedName("value")
     private String value;
-    private String type;
+
+    @SerializedName("type")
+    private SDType type;
+
+    @SerializedName("place")
     private String location;
+
+    @SerializedName("status")
     private boolean isActive;
 
-    public Sensor(String value, String type, String location, boolean isActive) {
+    public Sensor(String value, SDType type, String location, boolean isActive) {
         this.value = value;
         this.type = type;
         this.location = location;
@@ -18,7 +27,7 @@ public class Sensor implements IStatus {
         this.value = value;
     }
 
-    public void setType(String type) {
+    public void setType(SDType type) {
         this.type = type;
     }
 
@@ -30,22 +39,18 @@ public class Sensor implements IStatus {
         isActive = active;
     }
 
-    @Override
     public String getValue() {
         return value;
     }
 
-    @Override
-    public String getType() {
+    public SDType getType() {
         return type;
     }
 
-    @Override
     public String getLocation() {
         return location;
     }
 
-    @Override
     public boolean isActive() {
         return isActive;
     }

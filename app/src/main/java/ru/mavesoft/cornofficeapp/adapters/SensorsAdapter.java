@@ -11,23 +11,35 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ru.mavesoft.cornofficeapp.R;
+import ru.mavesoft.cornofficeapp.modules.SDType;
 import ru.mavesoft.cornofficeapp.modules.Sensor;
 
 public class SensorsAdapter extends RecyclerView.Adapter<SensorsAdapter.ViewHolder> {
 
-    // Temp
-    private final String temperatureSensorType = "TemperatureSensor";
-    private final String humiditySensorType = "HumiditySensor";
-
     private Context context;
     private List<Sensor> sensorList;
+
+    private Map<SDType, Integer> icons;
 
     public SensorsAdapter(Context context, List<Sensor> sensorList) {
         this.context = context;
         this.sensorList = sensorList;
+
+        icons = initializeIcons();
+    }
+
+    private Map<SDType, Integer> initializeIcons() {
+        Map<SDType, Integer> icons = new HashMap<>();
+
+        icons.put(SDType.TemperatureSensor, R.drawable.ic_baseline_device_thermostat_24);
+        icons.put(SDType.HumiditySensor, R.drawable.ic_baseline_humidity_24);
+
+        return icons;
     }
 
     @NonNull
@@ -42,16 +54,19 @@ public class SensorsAdapter extends RecyclerView.Adapter<SensorsAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull SensorsAdapter.ViewHolder holder, int position) {
 
+        holder.getSensorIcon().setImageDrawable(context.getDrawable(icons.get(sensorList.get(position).getType())));
+
+        String adder = "";
         switch (sensorList.get(position).getType()) {
-            case humiditySensorType:
-                holder.getSensorIcon().setImageDrawable(context.getDrawable(R.drawable.ic_baseline_humidity_24));
+            case TemperatureSensor:
+                adder = "°C";
                 break;
-            case temperatureSensorType:
-                holder.getSensorIcon().setImageDrawable(context.getDrawable(R.drawable.ic_baseline_device_thermostat_24));
+            case HumiditySensor:
+                adder = "%";
                 break;
         }
-
-        holder.getTextViewData().setText(sensorList.get(position).getValue());
+        String value = Integer.toString(Math.round(Float.parseFloat(sensorList.get(position).getValue())));
+        holder.getTextViewData().setText(value + adder);
         holder.getTextViewLocation().setText(sensorList.get(position).getLocation());
 
     }
